@@ -9,13 +9,13 @@ export async function serverIdInput(): Promise<string> {
     {
       type: 'text',
       name: 'value',
-      message: 'Please enter your server id:',
+      message: 'Enter your Server ID (see https://mailosaur.com/app/servers):',
       validate: async (value: string) => {
         if (value.length === 8) {
           return true;
         }
 
-        return 'Invalid server id';
+        return 'Could not find inbox (server) with this ID. Please check and try again.';
       },
     },
     {
