@@ -10,8 +10,9 @@ export async function apiKeyInput(isServerApiKey: boolean): Promise<string> {
     {
       type: 'password',
       name: 'value',
-      message:
-        'Please enter your Mailosaur API key (see https://mailosaur.com/app/account/keys):',
+      message: `Please enter your Mailosaur API key (see ${pc.blue(
+        'https://mailosaur.com/app/account/keys'
+      )}):`,
       validate: async value => {
         const encodedApiKey = Buffer.from(`key:${value}`).toString('base64');
 
