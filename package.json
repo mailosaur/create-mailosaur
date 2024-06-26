@@ -1,0 +1,34 @@
+{
+  "name": "create-mailosaur",
+  "version": "0.0.1",
+  "description": "",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "create-mailosaur": "./dist/index.mjs"
+  },
+  "scripts": {
+    "build": "npm run fetch-examples && tsup",
+    "fetch-examples": "rm -rf ./src/examples && git clone https://github.com/mailosaur/examples.git ./src/examples"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cross-spawn": "^7.0.3",
+    "fast-glob": "^3.3.2",
+    "fs-extra": "^11.2.0",
+    "picocolors": "^1.0.1",
+    "prompts": "^2.4.2",
+    "tsup": "^8.1.0",
+    "typescript": "^5.4.5",
+    "validate-npm-package-name": "^5.0.1"
+  },
+  "devDependencies": {
+    "@types/cross-spawn": "^6.0.6",
+    "@types/fs-extra": "^11.0.4",
+    "@types/node": "^20.14.2",
+    "@types/prompts": "^2.4.9",
+    "@types/validate-npm-package-name": "^4.0.2"
+  }
+}

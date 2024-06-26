@@ -1,0 +1,29 @@
+name: Publish
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  publish:
+    runs-on: ${{ vars.LINUX }}
+    timeout-minutes: 10
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ vars.NODE_VERSION }}
+          registry-url: https://registry.npmjs.org/
+      - name: version
+        run: |
+          npm --no-git-tag-version --allow-same-version version `git describe --abbrev=0 --tags`
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Notify on failure
+        if: ${{ failure() }}
+        uses: ./.github/actions/fail-notification
+        with:
+          webhook-url: ${{ secrets.TEAMS_BUILDS_WEBHOOK }}

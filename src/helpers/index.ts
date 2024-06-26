@@ -1,0 +1,11 @@
+export { getPackageManager } from './getPackageManager';
+export { isFolderEmpty } from './isFolderEmpty';
+export { isWriteable } from './isWriteable';
+export { exit } from './exit';
+export { copy } from './copy';
+export { modifyPackageJson } from './modifyPackageJson';
+export { install } from './install';
+export { handleFilesByLanguage } from './handleFilesByLanguage';
+export { checkIfInstalled } from './checkIfInstalled';
+export { howToRunTests } from './howToRunTests';
+export { modifyComposerJson } from './modifyComposerJson';

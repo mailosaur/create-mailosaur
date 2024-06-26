@@ -1,0 +1,30 @@
+name: CI
+
+on:
+  push:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ${{ vars.LINUX }}
+    timeout-minutes: 10
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ vars.NODE_VERSION }}
+      - name: Set build number
+        uses: ./.github/actions/build-number
+      - name: Build
+        run: npm i && npm run build
+      - name: Notify on failure
+        if: ${{ failure() }}
+        uses: ./.github/actions/fail-notification
+        with:
+          webhook-url: ${{ secrets.TEAMS_BUILDS_WEBHOOK }}
