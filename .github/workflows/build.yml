@@ -19,8 +19,6 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ vars.NODE_VERSION }}
-      - name: Set build number
-        uses: ./.github/actions/build-number
       - name: Build
         run: npm i && npm run build
       - name: Notify on failure
