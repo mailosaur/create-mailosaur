@@ -16,10 +16,13 @@ jobs:
         with:
           node-version: ${{ vars.NODE_VERSION }}
           registry-url: https://registry.npmjs.org/
-      - name: version
+      - name: Version
         run: |
           npm --no-git-tag-version --allow-same-version version `git describe --abbrev=0 --tags`
-      - run: npm publish
+      - name: Build
+        run: npm i && npm run build
+      - name: Publish
+        run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Notify on failure
