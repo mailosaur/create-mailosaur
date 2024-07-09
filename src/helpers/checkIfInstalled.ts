@@ -19,7 +19,7 @@ export function checkIfInstalled(library: Libraries) {
     stdio: 'ignore',
   });
 
-  child.on('close', (code) => {
+  child.on('close', code => {
     if (code !== 0) {
       console.log(
         pc.red(
@@ -79,5 +79,5 @@ function handleSpecificLibraryError({
       break;
   }
 
-  return exit(1);
+  return exit(0);
 }

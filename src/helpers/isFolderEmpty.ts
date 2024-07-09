@@ -12,6 +12,6 @@ export async function isFolderEmpty({ root }: IsFolderEmptyProps) {
 
   if (files.length > 0) {
     console.error(`${pc.red(pc.bold('\nRoot folder must be empty'))}`);
-    exit(1);
+    exit(0);
   }
 }

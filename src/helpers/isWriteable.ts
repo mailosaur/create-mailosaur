@@ -15,6 +15,6 @@ export async function isWriteable({ root }: IsWriteableProps) {
     console.error(
       `${pc.red(pc.bold('\nYou dont have permission to write to this folder'))}`
     );
-    exit(1);
+    exit(0);
   }
 }
