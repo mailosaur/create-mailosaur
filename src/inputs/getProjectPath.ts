@@ -16,11 +16,11 @@ export async function getProjectPath(projectName: string): Promise<string> {
       )} because of npm naming restrictions:`
     );
 
-    validation.errors.forEach((p) =>
+    validation.errors.forEach(p =>
       console.error(`${pc.red(pc.bold('*'))} ${p}`)
     );
 
-    exit(1);
+    exit(0);
   }
 
   const resolvedProjectPath = path.resolve(projectName);
@@ -31,7 +31,7 @@ export async function getProjectPath(projectName: string): Promise<string> {
 
   if (folderExists) {
     console.error(`${pc.red(pc.bold('\nFolder already exists'))}`);
-    exit(1);
+    exit(0);
   }
 
   //! ADD THIS BACK WHEN NOT LOCALLY TESTING
