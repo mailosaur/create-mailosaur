@@ -27,25 +27,6 @@ MAILOSAUR_PHONE_NUMBER=
   }
 
   console.log(pc.cyan(pc.bold(`\nUsing bundler`)));
-  console.log('\nInstalling gems:\n');
 
-  const gemFilePath = path.join(root, 'Gemfile');
-
-  const gems = fsExtra
-    .readFileSync(gemFilePath, 'utf-8')
-    .split('\n')
-    .filter(Boolean);
-
-  const gemRegex = /^gem ['"]([^'"]+)['"],\s*['"]([^'"]+)['"]/;
-
-  for (const gem of gems) {
-    const match = gemRegex.exec(gem);
-
-    if (match) {
-      const gemName = match[1];
-      console.log(`   - ${pc.cyan(gemName)}`);
-    }
-  }
-
-  await install({ packageManager: 'bundle' });
+  await install({ packageManager: 'bundle', dependencyName: 'gems' });
 }

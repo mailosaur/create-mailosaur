@@ -1,15 +1,20 @@
 import spawn from 'cross-spawn';
+import loading from 'loading-cli';
 
 import { PackageManager } from '@/types';
+import { exit } from './exit';
 
 interface InstallProps {
   packageManager: PackageManager | null;
+  dependencyName: string;
 }
 
-export async function install({ packageManager }: InstallProps): Promise<void> {
+export async function install({ packageManager, dependencyName }: InstallProps): Promise<void> {
   if (!packageManager) {
     return;
   }
+
+  const load = loading(`Installing ${dependencyName}`);
 
   const args: string[] = [];
 
@@ -36,13 +41,23 @@ export async function install({ packageManager }: InstallProps): Promise<void> {
       stdio: 'ignore',
     });
 
+    child.on('spawn', () => {
+      console.log();
+      load.start();
+    })
+
     child.on('close', (code: number) => {
       if (code !== 0) {
         reject({ command: `${packageManager} ${args.join(' ')}` });
-        return;
+        load.fail();
+        exit(0);
       }
 
       resolve();
     });
+
+    child.on('exit', () => {
+      load.succeed();
+    })
   });
 }

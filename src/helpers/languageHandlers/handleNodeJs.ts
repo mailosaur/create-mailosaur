@@ -6,7 +6,7 @@ import pc from 'picocolors';
 import { CreateOptions } from '@/types';
 
 import { install } from '../install';
-import { modifyPackageJson } from '../modifyPackageJson';
+import { installPlaywright } from '../installPlaywright';
 
 interface HandleNodeJsProps {
   createOptions: CreateOptions;
@@ -14,7 +14,7 @@ interface HandleNodeJsProps {
 }
 
 export async function handleNodeJs({ createOptions, root }: HandleNodeJsProps) {
-  const { apiKey, serverId, projectName, installDependencies, packageManager } =
+  const { apiKey, framework, serverId, installDependencies, language, packageManager } =
     createOptions;
 
   const envContent = `MAILOSAUR_API_KEY=${apiKey}
@@ -24,18 +24,15 @@ MAILOSAUR_PHONE_NUMBER=
 
   await fsExtra.writeFile(path.join(root, '.env'), envContent);
 
-  const packageJson = await modifyPackageJson(root, projectName);
-
   if (!installDependencies) {
     return;
   }
 
   console.log(pc.cyan(pc.bold(`\nUsing ${packageManager}`)));
-  console.log('\nInstalling dependencies:\n');
 
-  for (const dependency in packageJson.dependencies) {
-    console.log(`   - ${pc.cyan(dependency)}`);
+  await install({ packageManager, dependencyName: 'dependencies' });
+
+  if (framework?.value === 'playwright') {
+    await installPlaywright({language});
   }
-
-  await install({ packageManager });
 }

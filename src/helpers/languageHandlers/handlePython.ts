@@ -27,18 +27,6 @@ MAILOSAUR_PHONE_NUMBER=
   }
 
   console.log(pc.cyan(pc.bold(`\nUsing pip`)));
-  console.log('\nInstalling requirements:\n');
 
-  const requirementsFilePath = path.join(root, 'requirements.txt');
-
-  const requirements = fsExtra
-    .readFileSync(requirementsFilePath, 'utf-8')
-    .split('\n')
-    .filter(Boolean);
-
-  for (const requirement of requirements) {
-    console.log(`   - ${pc.cyan(requirement.split('==')[0])}`);
-  }
-
-  await install({ packageManager: 'pip' });
+  await install({ packageManager: 'pip', dependencyName: 'requirements' });
 }
