@@ -44,6 +44,8 @@ export async function apiKeyInput(isServerApiKey: boolean): Promise<string> {
   );
 
   if (isServerApiKey) {
+    console.log(); // Creates space
+    
     console.log(
       pc.yellow(
         pc.bold(

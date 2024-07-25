@@ -9,3 +9,4 @@ export { handleFilesByLanguage } from './handleFilesByLanguage';
 export { checkIfInstalled } from './checkIfInstalled';
 export { howToRunTests } from './howToRunTests';
 export { modifyComposerJson } from './modifyComposerJson';
+export { installPlaywright } from './installPlaywright';
