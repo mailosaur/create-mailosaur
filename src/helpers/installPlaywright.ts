@@ -41,7 +41,7 @@ export function installPlaywright({ language }: InstallPlaywrightProps): Promise
         });
 
         child.on('exit', () => {
-          load.stop();
+          load.succeed();
         });
       });
     case 'dotnet':
@@ -66,7 +66,7 @@ export function installPlaywright({ language }: InstallPlaywrightProps): Promise
         });
 
         child.on('exit', () => {
-          load.stop();
+          load.succeed();
         });
       }); 
   }

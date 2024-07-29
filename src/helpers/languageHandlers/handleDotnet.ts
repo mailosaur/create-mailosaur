@@ -1,8 +1,11 @@
 import path from 'path';
 import fsExtra from 'fs-extra';
+import prompts from 'prompts';
 
 import { CreateOptions } from '@/types';
+
 import { installPlaywright } from '../installPlaywright';
+import { exit } from '../exit';
 
 interface HandleDotNetProps {
   createOptions: CreateOptions;
@@ -22,7 +25,29 @@ export async function handleDotnet({ createOptions, root }: HandleDotNetProps) {
 
   await fsExtra.writeFile(path.join(root, 'appsettings.Testing.json'), secrets);
 
+  console.log(); // Create space
+
   if (framework?.value === 'playwright') {
+    const installBrowsers = await prompts(
+      {
+        type: 'toggle',
+        name: 'value',
+        message: `Install Playwright browsers?`,
+        initial: true,
+        active: 'Yes',
+        inactive: 'No',
+      },
+      {
+        onCancel: () => {
+          exit(0);
+        },
+      }
+    );
+
+    if (!installBrowsers.value) {
+      return;
+    }
+
     await installPlaywright({language});
   }
 }
