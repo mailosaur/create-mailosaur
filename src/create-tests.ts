@@ -16,6 +16,7 @@ export async function createTests(createOptions: CreateOptions) {
     framework,
     language,
     installDependencies,
+    createExampleTests,
   } = createOptions;
 
   const root = path.resolve(projectPath);
@@ -50,5 +51,6 @@ export async function createTests(createOptions: CreateOptions) {
     language,
     packageManager,
     installDependencies,
+    createExampleTests,
   });
 }

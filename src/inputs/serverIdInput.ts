@@ -1,5 +1,4 @@
 import prompts from 'prompts';
-import pc from 'picocolors';
 
 import { exit } from '@/helpers';
 
@@ -10,9 +9,7 @@ export async function serverIdInput(): Promise<string> {
     {
       type: 'text',
       name: 'value',
-      message: `Enter your Server ID (see ${pc.blue(
-        'https://mailosaur.com/app/servers'
-      )}):`,
+      message: `Server/inbox to generate examples tests for:`,
       validate: async (value: string) => {
         if (value.length === 8) {
           return true;

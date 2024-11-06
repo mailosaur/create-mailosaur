@@ -15,7 +15,7 @@ export async function scaffoldSample({
   createOptions,
   root,
 }: ScaffoldSampleProps) {
-  const { framework, language } = createOptions;
+  const { framework, language, createExampleTests } = createOptions;
 
   let examplePath = '';
 
@@ -44,7 +44,7 @@ export async function scaffoldSample({
     );
   }
 
-  await copy(examplePath, root);
+  await copy(examplePath, root, language, framework, createExampleTests);
 
   await handleFilesByLanguage({ createOptions, root });
 }

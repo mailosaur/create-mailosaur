@@ -8,7 +8,9 @@ export type CreateOptions = {
   projectPath: string;
   framework: Framework | null;
   language: Language | null;
-  apiKey: string;
-  serverId: string;
+  createExampleTests: boolean;
+  provideApiKey?: boolean;
+  apiKey?: string;
+  serverId?: string;
   installDependencies: boolean;
 };

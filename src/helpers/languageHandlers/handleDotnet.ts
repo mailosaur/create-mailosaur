@@ -13,7 +13,8 @@ interface HandleDotNetProps {
 }
 
 export async function handleDotnet({ createOptions, root }: HandleDotNetProps) {
-  const { apiKey, framework, language, serverId } = createOptions;
+  const { apiKey, framework, language, serverId, createExampleTests } =
+    createOptions;
 
   const secrets = `{
   "Secrets": {
@@ -27,7 +28,7 @@ export async function handleDotnet({ createOptions, root }: HandleDotNetProps) {
 
   console.log(); // Create space
 
-  if (framework?.value === 'playwright') {
+  if (framework?.value === 'playwright' && createExampleTests) {
     const installBrowsers = await prompts(
       {
         type: 'toggle',
@@ -48,6 +49,6 @@ export async function handleDotnet({ createOptions, root }: HandleDotNetProps) {
       return;
     }
 
-    await installPlaywright({language});
+    await installPlaywright({ language });
   }
 }

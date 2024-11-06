@@ -5,3 +5,5 @@ export { frameworkInput } from './frameworkInput';
 export { languageInput } from './languageInput';
 export { serverIdInput } from './serverIdInput';
 export { installDependenciesInput } from './installDependenciesInput';
+export { createExampleTestsInput } from './createExampleTestsInput';
+export { provideApiKeyInput } from './provideApiKeyInput';
