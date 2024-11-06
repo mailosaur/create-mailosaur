@@ -4,11 +4,13 @@ import { CreateOptions } from '@/types';
 import { checkIfInstalled, getPackageManager } from '@/helpers';
 import {
   apiKeyInput,
+  createExampleTestsInput,
   frameworkInput,
   getProjectPath,
   installDependenciesInput,
   languageInput,
   projectNameInput,
+  provideApiKeyInput,
   serverIdInput,
 } from '@/inputs';
 
@@ -28,6 +30,8 @@ async function main() {
     projectPath: '',
     framework: null,
     language: null,
+    createExampleTests: false,
+    provideApiKey: false,
     apiKey: '',
     serverId: '',
     installDependencies: false,
@@ -43,15 +47,26 @@ async function main() {
 
   createOptions.language = await languageInput(createOptions.framework);
 
-  createOptions.language.requiredLibraries?.forEach((library) => {
+  createOptions.language.requiredLibraries?.forEach(library => {
     checkIfInstalled(library);
   });
 
-  createOptions.apiKey = await apiKeyInput(isServerApiKey);
+  createOptions.createExampleTests = await createExampleTestsInput();
 
-  createOptions.serverId = await serverIdInput();
+  if (createOptions.createExampleTests) {
+    createOptions.provideApiKey = await provideApiKeyInput();
 
-  if (createOptions.language?.installDependencies) {
+    if (createOptions.provideApiKey) {
+      createOptions.apiKey = await apiKeyInput(isServerApiKey);
+      createOptions.serverId = await serverIdInput();
+    }
+  }
+
+  if (
+    createOptions.createExampleTests &&
+    createOptions.provideApiKey &&
+    createOptions.language?.installDependencies
+  ) {
     createOptions.installDependencies = await installDependenciesInput(
       createOptions.language
     );

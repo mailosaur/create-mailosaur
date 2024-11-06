@@ -7,6 +7,7 @@ export interface Language {
   installDependencies: boolean;
   defaultFramework?: Frameworks;
   requiredLibraries?: Libraries[];
+  ext: string;
 }
 
 export type Languages =

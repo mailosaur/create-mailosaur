@@ -10,16 +10,16 @@ export async function installDependenciesInput(language: Language) {
 
   switch (language.value) {
     case 'nodejs':
-      dependencyName = 'required dependencies';
+      dependencyName = 'required test dependencies';
       break;
     case 'python':
-      dependencyName = 'requirements';
+      dependencyName = 'test requirements';
       break;
     case 'ruby':
-      dependencyName = 'required gems';
+      dependencyName = 'required test gems';
       break;
     case 'php':
-      dependencyName = 'requirements';
+      dependencyName = 'test requirements';
       break;
     default:
       break;
@@ -29,7 +29,7 @@ export async function installDependenciesInput(language: Language) {
     {
       type: 'toggle',
       name: 'value',
-      message: `Install ${dependencyName}?`,
+      message: `Install all ${dependencyName}?`,
       initial: true,
       active: 'Yes',
       inactive: 'No',

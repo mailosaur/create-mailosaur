@@ -14,7 +14,7 @@ export async function projectNameInput(): Promise<string> {
       name: 'value',
       message: 'What is your project named?',
       initial: 'mailosaur-tests',
-      validate: (name) => {
+      validate: name => {
         const validation = validate(path.basename(path.resolve(name)));
 
         if (!validation.errors) {

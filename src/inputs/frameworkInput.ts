@@ -7,14 +7,14 @@ import { Framework, Frameworks } from '@/types';
 export async function frameworkInput(): Promise<Framework> {
   console.log(); // Creates space
 
-  const frameworkKeys = Object.keys(frameworks).map((framework) => framework);
+  const frameworkKeys = Object.keys(frameworks).map(framework => framework);
 
   const enteredFramework = await prompts(
     {
       type: 'select',
       name: 'value',
-      message: 'Choose your framework',
-      choices: frameworkKeys.map((framework) => ({
+      message: 'Select your testing framework',
+      choices: frameworkKeys.map(framework => ({
         title: frameworks[framework as Frameworks].name,
         value: frameworks[framework as Frameworks].value,
       })),

@@ -14,8 +14,15 @@ interface HandleNodeJsProps {
 }
 
 export async function handleNodeJs({ createOptions, root }: HandleNodeJsProps) {
-  const { apiKey, framework, serverId, installDependencies, language, packageManager } =
-    createOptions;
+  const {
+    apiKey,
+    framework,
+    serverId,
+    installDependencies,
+    language,
+    packageManager,
+    createExampleTests,
+  } = createOptions;
 
   const envContent = `MAILOSAUR_API_KEY=${apiKey}
 MAILOSAUR_SERVER_ID=${serverId}
@@ -32,7 +39,7 @@ MAILOSAUR_PHONE_NUMBER=
 
   await install({ packageManager, dependencyName: 'dependencies' });
 
-  if (framework?.value === 'playwright') {
-    await installPlaywright({language});
+  if (framework?.value === 'playwright' && createExampleTests) {
+    await installPlaywright({ language });
   }
 }

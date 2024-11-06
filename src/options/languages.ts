@@ -6,6 +6,7 @@ const nodejs: Language = {
   installDependencies: true,
   defaultFramework: 'playwright',
   requiredLibraries: ['node'],
+  ext: 'js',
 };
 
 const dotnet: Language = {
@@ -13,6 +14,7 @@ const dotnet: Language = {
   value: 'dotnet',
   installDependencies: false,
   defaultFramework: 'selenium',
+  ext: 'cs',
 };
 
 const java: Language = {
@@ -20,6 +22,7 @@ const java: Language = {
   value: 'java',
   installDependencies: false,
   defaultFramework: 'selenium',
+  ext: 'java',
 };
 
 const python: Language = {
@@ -28,6 +31,7 @@ const python: Language = {
   installDependencies: true,
   defaultFramework: 'selenium',
   requiredLibraries: ['python', 'pip'],
+  ext: 'py',
 };
 
 const php: Language = {
@@ -35,6 +39,7 @@ const php: Language = {
   value: 'php',
   installDependencies: true,
   requiredLibraries: ['php', 'composer'],
+  ext: 'php',
 };
 
 const ruby: Language = {
@@ -43,6 +48,7 @@ const ruby: Language = {
   installDependencies: true,
   defaultFramework: 'selenium',
   requiredLibraries: ['ruby'],
+  ext: 'rb',
 };
 
 const go: Language = {
@@ -50,6 +56,7 @@ const go: Language = {
   value: 'go',
   installDependencies: false,
   requiredLibraries: ['go'],
+  ext: 'go',
 };
 
 export const languages: Record<Languages, Language> = {

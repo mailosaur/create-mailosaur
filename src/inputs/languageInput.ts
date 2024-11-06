@@ -17,8 +17,8 @@ export async function languageInput(
     {
       type: 'select',
       name: 'value',
-      message: 'Choose your language',
-      choices: framework?.languages.map((language) => ({
+      message: 'Select a language',
+      choices: framework?.languages.map(language => ({
         title: language.name,
         value: language.value,
       })),
