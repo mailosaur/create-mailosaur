@@ -11,7 +11,7 @@ export async function apiKeyInput(isServerApiKey: boolean): Promise<string> {
       type: 'password',
       name: 'value',
       message: `Please enter your Mailosaur API key (see ${pc.blue(
-        'https://mailosaur.com/app/account/keys'
+        'https://mailosaur.com/app/keys'
       )}):`,
       validate: async value => {
         const encodedApiKey = Buffer.from(`key:${value}`).toString('base64');
@@ -48,7 +48,7 @@ export async function apiKeyInput(isServerApiKey: boolean): Promise<string> {
     console.log(
       pc.yellow(
         pc.bold(
-          'WARNING: This API key only supports email/SMS testing for a specific inbox (server). Some examples will not work with this API key.'
+          'WARNING: This API key only supports email/SMS testing for a specific server/inbox. Some examples will not work with this API key.'
         )
       )
     );

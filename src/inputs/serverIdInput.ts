@@ -9,7 +9,7 @@ export async function serverIdInput(): Promise<string> {
     {
       type: 'text',
       name: 'value',
-      message: `Server/inbox to generate examples tests for:`,
+      message: `Enter the ID of your Mailosaur server/inbox (see https://mailosaur.com/app/servers)`,
       validate: async (value: string) => {
         if (value.length === 8) {
           return true;

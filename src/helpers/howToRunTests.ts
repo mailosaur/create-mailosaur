@@ -20,7 +20,7 @@ export function howToRunTests({
   createExampleTests,
 }: HowToRunTestsProps) {
   console.log(
-    `\nTo ${createExampleTests ? 'access' : 'run'} your tests, type:`
+    `\nTo ${!createExampleTests ? 'access' : 'run'} your tests, type:`
   );
   console.log(pc.cyan(`\n   cd`), cdpath);
 
