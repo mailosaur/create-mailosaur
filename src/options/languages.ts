@@ -1,4 +1,4 @@
-import { Language, Languages } from '@/types';
+import type { Language, Languages } from '@/types';
 
 const nodejs: Language = {
   name: 'Node.js',

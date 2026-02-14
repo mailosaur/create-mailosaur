@@ -1,7 +1,7 @@
 import path from 'path';
 import fsExtra from 'fs-extra';
 
-import { CreateOptions } from '@/types';
+import type { CreateOptions } from '@/types';
 
 interface HandleJavaProps {
   createOptions: CreateOptions;

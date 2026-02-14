@@ -1,6 +1,6 @@
-import { Framework } from './frameworks';
-import { Language } from './languages';
-import { PackageManager } from './packageManager';
+import type { Framework } from './frameworks';
+import type { Language } from './languages';
+import type { PackageManager } from './packageManager';
 
 export type CreateOptions = {
   packageManager: PackageManager | null;

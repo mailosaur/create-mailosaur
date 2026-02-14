@@ -3,7 +3,7 @@ import fsExtra from 'fs-extra';
 
 import pc from 'picocolors';
 
-import { CreateOptions } from '@/types';
+import type { CreateOptions } from '@/types';
 
 import { install } from '../install';
 
@@ -13,7 +13,7 @@ interface HandlePhpProps {
 }
 
 export async function handlePhp({ createOptions, root }: HandlePhpProps) {
-  const { apiKey, serverId, projectName, installDependencies } = createOptions;
+  const { apiKey, serverId, installDependencies } = createOptions;
 
   const envContent = `MAILOSAUR_API_KEY=${apiKey}
 MAILOSAUR_SERVER_ID=${serverId}
@@ -22,7 +22,9 @@ MAILOSAUR_PHONE_NUMBER=
 
   await fsExtra.writeFile(path.join(root, '.env'), envContent);
 
-  if (!installDependencies) return;
+  if (!installDependencies) {
+    return;
+  }
 
   console.log(pc.cyan(pc.bold('\nUsing composer')));
 

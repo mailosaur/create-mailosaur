@@ -5,6 +5,7 @@ import { exit } from '@/helpers';
 
 export async function apiKeyInput(isServerApiKey: boolean): Promise<string> {
   console.log(); // Creates space
+  let isServerKey = isServerApiKey;
 
   const enteredApiKey = await prompts(
     {
@@ -29,7 +30,7 @@ export async function apiKeyInput(isServerApiKey: boolean): Promise<string> {
         }
 
         if (res.status === 403) {
-          isServerApiKey = true;
+          isServerKey = true;
           return true;
         }
 
@@ -43,7 +44,7 @@ export async function apiKeyInput(isServerApiKey: boolean): Promise<string> {
     }
   );
 
-  if (isServerApiKey) {
+  if (isServerKey) {
     console.log(); // Creates space
     console.log(
       pc.yellow(

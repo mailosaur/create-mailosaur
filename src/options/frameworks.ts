@@ -1,4 +1,4 @@
-import { Framework, Frameworks } from '@/types';
+import type { Framework, Frameworks } from '@/types';
 
 import { languages } from './languages';
 

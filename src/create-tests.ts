@@ -3,7 +3,7 @@ import path, { dirname } from 'path';
 
 import pc from 'picocolors';
 
-import { CreateOptions } from '@/types';
+import type { CreateOptions } from '@/types';
 import { howToRunTests } from '@/helpers';
 
 import { scaffoldSample } from './scaffolding';

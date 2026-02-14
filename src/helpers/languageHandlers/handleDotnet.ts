@@ -2,7 +2,7 @@ import path from 'path';
 import fsExtra from 'fs-extra';
 import prompts from 'prompts';
 
-import { CreateOptions } from '@/types';
+import type { CreateOptions } from '@/types';
 
 import { installPlaywright } from '../installPlaywright';
 import { exit } from '../exit';

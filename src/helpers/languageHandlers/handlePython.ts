@@ -3,7 +3,7 @@ import fsExtra from 'fs-extra';
 
 import pc from 'picocolors';
 
-import { CreateOptions } from '@/types';
+import type { CreateOptions } from '@/types';
 
 import { install } from '../install';
 

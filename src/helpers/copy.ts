@@ -1,7 +1,7 @@
 import path from 'path';
 import glob from 'fast-glob';
 import fsExtra from 'fs-extra';
-import { Framework, Language } from '@/types';
+import type { Framework, Language } from '@/types';
 
 export async function copy(
   sourceDir: string,
@@ -21,7 +21,7 @@ export async function copy(
       })
     );
 
-    let fileExtension;
+    let fileExtension: string | undefined;
 
     switch (framework?.value) {
       case 'cypress':
@@ -94,7 +94,7 @@ export async function copy(
       );
       await fsExtra.writeFile(blankTestFilePath, '');
     }
-  } catch (err) {
+  } catch (_err) {
     console.error('Error copying files');
   }
 }
