@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { CreateOptions } from '@/types';
+import type { CreateOptions } from '@/types';
 import { checkIfInstalled, getPackageManager } from '@/helpers';
 import {
   apiKeyInput,
@@ -22,7 +22,7 @@ process.on('SIGINT', handleSigTerm);
 process.on('SIGTERM', handleSigTerm);
 
 async function main() {
-  let isServerApiKey = false;
+  const isServerApiKey = false;
 
   const createOptions: CreateOptions = {
     packageManager: null,

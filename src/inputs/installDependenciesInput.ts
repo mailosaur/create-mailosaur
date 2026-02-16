@@ -1,7 +1,7 @@
 import prompts from 'prompts';
 
 import { exit } from '@/helpers';
-import { Language } from '@/types';
+import type { Language } from '@/types';
 
 export async function installDependenciesInput(language: Language) {
   console.log(); // Creates space

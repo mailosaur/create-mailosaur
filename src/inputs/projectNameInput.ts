@@ -21,7 +21,7 @@ export async function projectNameInput(): Promise<string> {
           return true;
         }
 
-        return 'Invalid project name: ' + validation.errors[0];
+        return `Invalid project name: ${validation.errors[0]}`;
       },
     },
     {

@@ -1,6 +1,6 @@
 import pc from 'picocolors';
 
-import { Framework, Language, PackageManager } from '@/types';
+import type { Framework, Language, PackageManager } from '@/types';
 
 interface HowToRunTestsProps {
   cdpath: string;
@@ -26,7 +26,7 @@ export function howToRunTests({
 
   if (createExampleTests) {
     switch (language?.value) {
-      case 'nodejs':
+      case 'nodejs': {
         const useYarn = packageManager === 'yarn';
 
         if (!installDependencies) {
@@ -37,6 +37,7 @@ export function howToRunTests({
           pc.cyan(`   ${packageManager} ${useYarn ? '' : 'run '}test`)
         );
         break;
+      }
       case 'dotnet':
         console.log(pc.cyan(`   dotnet test`));
         break;

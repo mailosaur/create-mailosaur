@@ -1,6 +1,6 @@
 import path from 'path';
 
-import { CreateOptions, Frameworks } from '@/types';
+import type { CreateOptions, Frameworks } from '@/types';
 import { copy, handleFilesByLanguage } from '@/helpers';
 import { frameworks } from '@/options';
 
@@ -24,8 +24,7 @@ export async function scaffoldSample({
       __dirname,
       examplesFolderName,
       language?.defaultFramework || '',
-      frameworks[language?.defaultFramework as Frameworks]?.languages.length >
-        1 || true
+      frameworks[language?.defaultFramework as Frameworks]?.languages.length > 1
         ? language?.value || ''
         : ''
     );

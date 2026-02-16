@@ -3,7 +3,7 @@ import os from 'os';
 import pc from 'picocolors';
 import spawn from 'cross-spawn';
 
-import { Libraries } from '@/types';
+import type { Libraries } from '@/types';
 
 import { exit } from './exit';
 

@@ -1,4 +1,4 @@
-import { CreateOptions } from '@/types';
+import type { CreateOptions } from '@/types';
 
 import {
   handleDotnet,

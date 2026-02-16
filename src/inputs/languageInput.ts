@@ -2,7 +2,7 @@ import prompts from 'prompts';
 
 import { exit } from '@/helpers';
 import { languages } from '@/options';
-import { Framework, Language, Languages } from '@/types';
+import type { Framework, Language, Languages } from '@/types';
 
 export async function languageInput(
   framework: Framework | null

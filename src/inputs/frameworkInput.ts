@@ -2,7 +2,7 @@ import prompts from 'prompts';
 
 import { exit } from '@/helpers';
 import { frameworks } from '@/options';
-import { Framework, Frameworks } from '@/types';
+import type { Framework, Frameworks } from '@/types';
 
 export async function frameworkInput(): Promise<Framework> {
   console.log(); // Creates space

@@ -1,5 +1,5 @@
-import { Frameworks } from './frameworks';
-import { Libraries } from './libraries';
+import type { Frameworks } from './frameworks';
+import type { Libraries } from './libraries';
 
 export interface Language {
   name: string;

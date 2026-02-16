@@ -11,7 +11,7 @@ interface IsWriteableProps {
 export async function isWriteable({ root }: IsWriteableProps) {
   try {
     await fsExtra.access(root, fsExtra.constants.W_OK);
-  } catch (err) {
+  } catch (_err) {
     console.error(
       `${pc.red(pc.bold('\nYou dont have permission to write to this folder'))}`
     );

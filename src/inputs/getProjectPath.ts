@@ -4,7 +4,7 @@ import path, { dirname } from 'path';
 import pc from 'picocolors';
 import validate from 'validate-npm-package-name';
 
-import { exit, isFolderEmpty, isWriteable } from '@/helpers';
+import { exit, isWriteable } from '@/helpers';
 
 export async function getProjectPath(projectName: string): Promise<string> {
   const validation = validate(projectName);
@@ -16,9 +16,9 @@ export async function getProjectPath(projectName: string): Promise<string> {
       )} because of npm naming restrictions:`
     );
 
-    validation.errors.forEach(p =>
-      console.error(`${pc.red(pc.bold('*'))} ${p}`)
-    );
+    for (const p of validation.errors) {
+      console.error(`${pc.red(pc.bold('*'))} ${p}`);
+    }
 
     exit(0);
   }

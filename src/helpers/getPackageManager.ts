@@ -1,4 +1,4 @@
-import { PackageManager } from '@/types';
+import type { PackageManager } from '@/types';
 
 export function getPackageManager(): PackageManager {
   const userAgent = process.env.npm_config_user_agent || '';
