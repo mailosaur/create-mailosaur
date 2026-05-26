@@ -11,9 +11,9 @@ interface HandleJavaProps {
 export async function handleJava({ createOptions, root }: HandleJavaProps) {
   const { apiKey, serverId } = createOptions;
 
-  const envContent = `mailosaurApiKey=${apiKey}
-mailosaurServerId=${serverId}
-mailosaurPhoneNumber=
+  const envContent = `MAILOSAUR_API_KEY=${apiKey}
+MAILOSAUR_SERVER_ID=${serverId}
+MAILOSAUR_PHONE_NUMBER=
 `;
 
   await fsExtra.writeFile(path.join(root, '.env'), envContent);
