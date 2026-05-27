@@ -16,15 +16,12 @@ export async function handleDotnet({ createOptions, root }: HandleDotNetProps) {
   const { apiKey, framework, language, serverId, createExampleTests } =
     createOptions;
 
-  const secrets = `{
-  "Secrets": {
-    "MailosaurApiKey": "${apiKey}",
-    "MailosaurServerId": "${serverId}",
-    "MailosaurPhoneNumber": ""
-  }
-}`;
+  const envContent = `MAILOSAUR_API_KEY=${apiKey}
+MAILOSAUR_SERVER_ID=${serverId}
+MAILOSAUR_PHONE_NUMBER=
+`;
 
-  await fsExtra.writeFile(path.join(root, 'appsettings.Testing.json'), secrets);
+  await fsExtra.writeFile(path.join(root, '.env'), envContent);
 
   console.log(); // Create space
 
