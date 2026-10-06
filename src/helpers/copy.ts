@@ -1,5 +1,5 @@
 import path from 'path';
-import glob from 'fast-glob';
+import { glob } from 'tinyglobby';
 import fsExtra from 'fs-extra';
 import type { Framework, Language } from '@/types';
 
